@@ -1,5 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Projects from "../components/Projects";
 
 export default function Home() {
   return (
@@ -10,7 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-   
+      <div className="max-w-7xl mx-auto px-10 ">
+        <Header />
+        <Hero />
+        <Projects />
+      </div>
     </div>
   );
 }
