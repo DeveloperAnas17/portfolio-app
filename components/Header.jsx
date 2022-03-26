@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between px-12 h-16">
+    <header className=" flex items-center justify-between px-12 h-16">
       <Link className="flex flex-1" href={"/"}>
         <a className="text-2xl italic text-red-500 font-semibold">DevAnas</a>
       </Link>
@@ -22,7 +22,7 @@ const Header = () => {
           Project
         </p>
       </div>
-    </div>
+    </header>
   );
 };
 
