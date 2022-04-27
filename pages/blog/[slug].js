@@ -11,8 +11,10 @@ const Slug = ({ post }) => {
     <main className="max-w-5xl mx-auto">
       <Header />
 
-      <div className="">
-        <h1 className="w-full text-center text-6xl font-bold">{post.title}</h1>
+      <div className="px-5 py-6">
+        <h1 className="w-full text-center text-2xl sm:text-3xl md:text-5xl font-bold">
+          {post.title}
+        </h1>
         <img
           src={urlFor(post.mainImage).url()}
           alt=""
@@ -20,32 +22,32 @@ const Slug = ({ post }) => {
         />
       </div>
 
-      <article>
+      <article className="px-5 py-1">
         <p className="">{post.description}</p>
 
-        <div>
-          {/* <PortableText
-          className=""
-          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-          content={post.body}
-          serializers={{
-            h1: (props: any) => (
-              <h1 className="text-2xl font-bold my-5"{...props} />
-            ),
-            h2: (props: any) => (
-              <h1 className="text-xl font-bold my-5" {...props} />
-            ),
-            li: ({children: any} => (
-              <li className="ml-4 list-disc">{children}</li>
-            )
-            link: ({useHref, children}: any => (
-              <a href={href} className="text-blue-500 hover:underline">{children}</a>
-            ))
-            ),
-            
-          }}
-          /> */}
+        <div className="my-10">
+          <PortableText
+            className=""
+            dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+            projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+            content={post.body}
+            serializers={{
+              h1: (props) => (
+                <h1 className=" text-2xl font-bold my-5" {...props} />
+              ),
+              h2: (props) => (
+                <h1 className=" text-xl font-bold my-5" {...props} />
+              ),
+              li: ({ children }) => (
+                <li className="ml-4 list-disc ">{children}</li>
+              ),
+              link: ({ href, children }) => (
+                <a href={href} className="text-blue-500 hover:underline">
+                  {children}
+                </a>
+              ),
+            }}
+          />
         </div>
       </article>
     </main>
