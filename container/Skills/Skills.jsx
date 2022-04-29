@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import ReactTooltip from 'react-tooltip';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import ReactTooltip from "react-tooltip";
+import Image from "next/image";
 
-import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
-import './Skills.scss';
+import { AppWrap, MotionWrap } from "../../wrapper";
+// import { urlFor, client } from "../../client";
+import { sanityClient, urlFor } from "../../sanity";
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
@@ -14,11 +15,11 @@ const Skills = () => {
     const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
 
-    client.fetch(query).then((data) => {
+    sanityClient.fetch(query).then((data) => {
       setExperiences(data);
     });
 
-    client.fetch(skillsQuery).then((data) => {
+    sanityClient.fetch(skillsQuery).then((data) => {
       setSkills(data);
     });
   }, []);
@@ -40,7 +41,12 @@ const Skills = () => {
                 className="app__flex"
                 style={{ backgroundColor: skill.bgColor }}
               >
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                {/* <Image
+                  width={70}
+                  height={70}
+                  src={urlFor(skill.icon)}
+                  alt={skill.name}
+                /> */}
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>
@@ -48,10 +54,7 @@ const Skills = () => {
         </motion.div>
         <div className="app__skills-exp">
           {experiences.map((experience) => (
-            <motion.div
-              className="app__skills-exp-item"
-              key={experience.year}
-            >
+            <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
               </div>
@@ -89,7 +92,7 @@ const Skills = () => {
 };
 
 export default AppWrap(
-  MotionWrap(Skills, 'app__skills'),
-  'skills',
-  'app__whitebg',
+  MotionWrap(Skills, "app__skills"),
+  "skills",
+  "app__whitebg"
 );

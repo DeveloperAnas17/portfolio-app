@@ -1,14 +1,11 @@
 import React from "react";
 import { sanityClient, urlFor } from "../sanity";
-import Header from "../components/Header";
 import Link from "next/link";
 
 const blog = ({ allPosts }) => {
   console.log(allPosts);
   return (
     <div className="">
-      <Header />
-
       <div className="mt-5 flex items-center justify-center flex-col">
         <h1 className="text-6xl font-bold text-center">Our Blog</h1>
         <p className="text-center font-medium mt-2 max-w-xl">

@@ -2,9 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "../components";
+import { Header, About, Work, Skills, Footer } from "../container";
 
-export default function Home({ allPosts }) {
-  // console.log(allPosts);
+export default function Home() {
   return (
     <div className="">
       <Head>
@@ -14,6 +14,11 @@ export default function Home({ allPosts }) {
       </Head>
       <div className="app">
         <Navbar />
+        <Header />
+        <About />
+        <Work />
+        <Skills />
+        <Footer />
       </div>
     </div>
   );

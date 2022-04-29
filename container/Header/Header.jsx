@@ -1,9 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
-import { AppWrap } from '../../wrapper';
-import { images } from '../../constants';
-import './Header.scss';
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { AppWrap } from "../../wrapper";
+import { images } from "../../constants";
 
 const scaleVariants = {
   whileInView: {
@@ -11,7 +10,7 @@ const scaleVariants = {
     opacity: [0, 1],
     transition: {
       duration: 1,
-      ease: 'easeInOut',
+      ease: "easeInOut",
     },
   },
 };
@@ -44,14 +43,27 @@ const Header = () => (
       transition={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__header-img"
     >
-      <img src={images.profile} alt="profile_bg" />
-      <motion.img
+      <Image
+        width={240}
+        height={200}
+        objectFit="contain"
+        src={images.profile}
+        alt="profile_bg"
+      />
+      <motion.div
         whileInView={{ scale: [0, 1] }}
-        transition={{ duration: 1, ease: 'easeInOut' }}
-        src={images.circle}
+        transition={{ duration: 1, ease: "easeInOut" }}
         alt="profile_circle"
         className="overlay_circle"
-      />
+      >
+        <Image
+          width={240}
+          height={200}
+          objectFit="contain"
+          src={images.circle}
+          alt="profile_bg"
+        />
+      </motion.div>
     </motion.div>
 
     <motion.div
@@ -61,11 +73,17 @@ const Header = () => (
     >
       {[images.flutter, images.redux, images.sass].map((circle, index) => (
         <div className="circle-cmp app__flex" key={`circle-${index}`}>
-          <img src={circle} alt="profile_bg" />
+          <Image
+            width={60}
+            height={60}
+            objectFit="contain"
+            src={circle}
+            alt="profile_bg"
+          />
         </div>
       ))}
     </motion.div>
   </div>
 );
 
-export default AppWrap(Header, 'home');
+export default AppWrap(Header, "home");
