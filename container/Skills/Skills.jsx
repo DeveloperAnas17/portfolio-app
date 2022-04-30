@@ -5,54 +5,161 @@ import Image from "next/image";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 // import { urlFor, client } from "../../client";
-import { sanityClient, urlFor } from "../../sanity";
+import figma from "../../assets/figma.png";
+import flutter from "../../assets/flutter.png";
+import graphql from "../../assets/graphql.png";
+import html from "../../assets/html.png";
+import javascript from "../../assets/javascript.png";
+import node from "../../assets/node.png";
+import python from "../../assets/python.png";
+import react from "../../assets/react.png";
+import redux from "../../assets/redux.png";
+import sass from "../../assets/sass.png";
+import typescript from "../../assets/typescript.png";
 
 const Skills = () => {
-  const [experiences, setExperiences] = useState([]);
-  const [skills, setSkills] = useState([]);
+  const images = [
+    figma,
+    flutter,
+    html,
+    javascript,
+    node,
+    python,
+    react,
+    redux,
+    sass,
+    typescript,
+  ];
 
-  useEffect(() => {
-    const query = '*[_type == "experiences"]';
-    const skillsQuery = '*[_type == "skills"]';
-
-    sanityClient.fetch(query).then((data) => {
-      setExperiences(data);
-    });
-
-    sanityClient.fetch(skillsQuery).then((data) => {
-      setSkills(data);
-    });
-  }, []);
+  const programmingLanguages = ["Javascript", "Python", "HTML", " CSS"];
+  const datas = ["Firebase", "Sanity", "RestAPI"];
+  const Frameworks = [
+    "ReactJs",
+    "NextJs",
+    "Framer Motion",
+    "Redux",
+    "Tailwind CSS",
+    "Styled-Components",
+    "Sass",
+  ];
+  const tools = [
+    "Git (Version Control)",
+    "Figma",
+    "Editor X",
+    "Responsive Webdesign",
+    "VsCode",
+    "No-Code Website",
+  ];
 
   return (
-    <>
-      <h2 className="head-text">Skills & Experiences</h2>
-
-      <div className="app__skills-container">
-        <motion.div className="app__skills-list">
-          {skills.map((skill) => (
-            <motion.div
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              className="app__skills-item app__flex"
-              key={skill.name}
-            >
-              <div
-                className="app__flex"
-                style={{ backgroundColor: skill.bgColor }}
-              >
-                {/* <Image
-                  width={70}
-                  height={70}
-                  src={urlFor(skill.icon)}
-                  alt={skill.name}
-                /> */}
-              </div>
-              <p className="p-text">{skill.name}</p>
-            </motion.div>
+    <div className="app__skills">
+      <div className="app__skillsContainer ">
+        <div className="app__skillsNames">
+          <h1>Skills & Tools</h1>
+          <p>These are the things I love working with as a web developer.</p>
+          <div className="app__skillsGrid">
+            <div className="app__skillGrid1">
+              <h1>Programming Language</h1>
+              {programmingLanguages.map((language, index) => (
+                <ul className="languages flex flex-col" key={index}>
+                  <li>{language}</li>
+                </ul>
+              ))}
+            </div>
+            <div className="app__skillGrid2">
+              <h1>Programming Language</h1>
+              {datas.map((data, index) => (
+                <ul className="languages flex flex-col" key={index}>
+                  <li>{data}</li>
+                </ul>
+              ))}
+            </div>
+            <div className="app__skillGrid3">
+              <h1>Programming Language</h1>
+              {Frameworks.map((framework, index) => (
+                <ul className="languages flex flex-col" key={index}>
+                  <li>{framework}</li>
+                </ul>
+              ))}
+            </div>
+            <div className="app__skillGrid4">
+              <h1>Other Skills & Tools</h1>
+              {tools.map((tool, index) => (
+                <ul className="languages flex flex-col" key={index}>
+                  <li>{tool}</li>
+                </ul>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* right */}
+      <div className="app__skillsRight">
+        <div className="app__skillsImages">
+          {images.map((img, index) => (
+            <div className="" key={index}>
+              <Image
+                className="app__skillsIcon border"
+                src={img}
+                width={60}
+                height={60}
+                alt=""
+                objectFit="contain"
+              />
+            </div>
           ))}
-        </motion.div>
-        <div className="app__skills-exp">
+        </div>
+      </div>
+      {/* <div className="app__skills-container">
+        <motion.div className="app__skills-list">
+          <motion.div
+            whileInView={{ opacity: [0, 1] }}
+            transition={{ duration: 0.5 }}
+            className="app__skills-item grid grid-cols-2 "
+          >
+            <div className=" bg-red-300">
+              <h2>Programming Language</h2>
+              {programmingLanguages.map((language, index) => (
+                <div className="" key={index}>
+                  <p>{programmingLanguages}</p>
+                </div>
+              ))}
+            </div>
+            <div className=" bg-red-300">
+              <h2>Programming Language</h2>
+              {programmingLanguages.map((language, index) => (
+                <div className="" key={index}>
+                  <p>{programmingLanguages}</p>
+                </div>
+              ))}
+            </div>
+            <div className=" bg-red-300">
+              <h2>Programming Language</h2>
+              {programmingLanguages.map((language, index) => (
+                <div className="" key={index}>
+                  <p>{programmingLanguages}</p>
+                </div>
+              ))}
+            </div>
+            <div className=" bg-red-300">
+              <h2>Programming Language</h2>
+              {programmingLanguages.map((language, index) => (
+                <div className="" key={index}>
+                  <p>{programmingLanguages}</p>
+                </div>
+              ))}
+            </div>
+            <div className=" bg-red-300">
+              <h2>Programming Language</h2>
+              {programmingLanguages.map((language, index) => (
+                <div className="" key={index}>
+                  <p>{programmingLanguages}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div> */}
+      {/* <div className="app__skills-exp">
           {experiences.map((experience) => (
             <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
@@ -85,9 +192,9 @@ const Skills = () => {
               </motion.div>
             </motion.div>
           ))}
-        </div>
-      </div>
-    </>
+        </div> */}
+      {/* </div> */}
+    </div>
   );
 };
 
@@ -96,3 +203,4 @@ export default AppWrap(
   "skills",
   "app__whitebg"
 );
+// "app__skills"

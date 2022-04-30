@@ -47,7 +47,7 @@ const Header = () => (
         width={240}
         height={200}
         objectFit="contain"
-        src={images.profile}
+        src={images.aman}
         alt="profile_bg"
       />
       <motion.div

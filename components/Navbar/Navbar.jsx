@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 import { images } from "../../constants";
 
@@ -23,9 +24,12 @@ const Navbar = () => {
         {["home", "about", "work", "skills", "contact"].map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div />
-            <a href={`#${item}`}>{item}</a>
+            <Link href={`#${item}`}>{item}</Link>
           </li>
         ))}
+        <li>
+          <a href={"/blog"}></a>
+        </li>
       </ul>
 
       <div className="app__navbar-menu">
@@ -45,6 +49,9 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              {/* <li>
+                <a href={"/blog"}></a>
+              </li> */}
             </ul>
           </motion.div>
         )}
